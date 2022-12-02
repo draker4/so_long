@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:38:25 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/02 19:22:46 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 20:01:54 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,16 +48,30 @@ static void	ft_initialize_ptr_sprites(t_game *game)
 		PATH_SPRITE_TOP);
 }
 
-void	ft_create_board(t_game *game, int init)
+void	ft_create_board(t_game *game)
 {
 	t_map	*current;
 
-	if (init)
-		ft_initialize_ptr_sprites(game);
+	ft_initialize_ptr_sprites(game);
 	current = game->map;
 	while (current)
 	{
 		ft_sprite_to_window(game, current);
+		current = current->next;
+	}
+}
+
+void	ft_move_board(t_game *game, int order)
+{
+	t_map	*current;
+
+	current = game->map;
+	while (current)
+	{
+		if (!order && (current->type == '0' || current->type == '1'))
+			ft_sprite_to_window(game, current);
+		else if (order && (current->type != '0' || current->type != '1'))
+			ft_sprite_to_window(game, current);
 		current = current->next;
 	}
 }

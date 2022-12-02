@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 13:47:18 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/02 18:37:57 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 19:56:12 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,10 +39,13 @@ ptr_sprite_background, (current->pos.x) * SPRITES, (current->pos.y) * SPRITES);
 
 void	ft_create_player_sprite(t_game *game, t_map *current)
 {
+	int	frame;
+
+	frame = game->p_right * (SPRITES / 5);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprites.\
 ptr_sprite_background, (current->pos.x) * SPRITES, (current->pos.y) * SPRITES);
 	mlx_put_image_to_window(game->mlx, game->win, game->sprites.\
-ptr_sprite_player, (current->pos.x) * SPRITES, (current->pos.y) * SPRITES);
+ptr_sprite_player, ((current->pos.x) * SPRITES) + frame, (current->pos.y) * SPRITES);
 }
 
 void	ft_create_exit(t_game *game, t_map *current)

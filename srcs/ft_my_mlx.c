@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/22 18:16:54 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/02 19:30:37 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 19:53:17 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,9 +70,10 @@ static void	ft_move_player(t_game *game, int dir)
 {
 	if (dir == 0 && game->player.map->right->type != '1')
 	{
-		game->player.map->type = '0';
-		game->player.map->right->type = 'P';
-		game->player.map = game->player.map->right;
+		//game->player.map->type = '0';
+		//game->player.map->right->type = 'P';
+		game->p_right = 1;
+		//game->player.map = game->player.map->right;
 	}
 	else if (dir == 1 && game->player.map->left->type != '1')
 	{

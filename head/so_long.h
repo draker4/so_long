@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:49:46 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/02 19:23:17 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 20:01:38 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,6 +92,7 @@ typedef struct s_game
 	int				nb_collectibles;
 	int				nb_moves;
 	t_sprites		sprites;
+	int				p_right;
 }	t_game;
 
 //prototypes parsing
@@ -107,7 +108,8 @@ int		ft_wrong_path(char *str);
 int		ft_verif_path(t_game *game);
 
 //prototypes creation board
-void	ft_create_board(t_game *game, int init);
+void	ft_create_board(t_game *game);
+void	ft_move_board(t_game *game, int order);
 
 //prototypes errors map
 int		ft_verif_walls(t_map *map);//, int max_x, int max_y);
