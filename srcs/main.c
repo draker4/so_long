@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:49:23 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/23 18:49:29 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 15:58:56 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,43 +37,47 @@
 // 	return (1);
 // }
 
+// int	close_win(int keycode, t_vars *vars)
+// {
+// 	ft_printf("keycode = %d\n", keycode);
+// 	if (keycode == 53)
+// 		mlx_destroy_window(vars->mlx, vars->win);
+// 	exit(0);
+// 	return (0);
+// }
 
 // int	main(void)
 // {
-// 	void	*mlx;
+// 	t_vars	vars;
 // 	void	*img;
 // 	void	*img2;
-// 	void	*win;
 // 	char	*relative_path = "./sprites/tile1.xpm";
 // 	int		img_width;
 // 	int		img_height;
 
-// 	mlx = mlx_init();
-// 	win = mlx_new_window(mlx, 1920, 1080, "./so_long from bperriol");
-// 	img = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-//  	img2 = mlx_xpm_file_to_image(mlx, relative_path, &img_width, &img_height);
-// 	mlx_put_image_to_window(mlx, win, img, 0, 0);
-// 	mlx_put_image_to_window(mlx, win, img2, 32, 0);
-// 	mlx_put_image_to_window(mlx, win, img2, 0, 32);
-//  	mlx_loop(mlx);
+// 	vars.mlx = mlx_init();
+// 	vars.win = mlx_new_window(vars.mlx, 1920, 1080, "./so_long from bperriol");
+// 	img = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
+//  	img2 = mlx_xpm_file_to_image(vars.mlx, relative_path, &img_width, &img_height);
+// 	mlx_put_image_to_window(vars.mlx, vars.win, img, 0, 0);
+// 	mlx_put_image_to_window(vars.mlx, vars.win, img2, 32, 0);
+// 	mlx_put_image_to_window(vars.mlx, vars.win, img2, 0, 32);
+
+// 	mlx_hook(vars.win, 2, 1L<<0, close_win, &vars);
+// 	mlx_loop(vars.mlx);
+//  	mlx_loop(vars.mlx);
 // }
 
 int	main(int argc, char **argv)
 {
-	t_map	*map;
+	t_game	game;
 
-	map = NULL;
 	if (argc != 2)
-	{
-		ft_printf("Error\nPas le bon nombre d'arguments !\n");
+		return (ft_errors(NULL, 14, NULL));
+	if (!ft_start_game(&game, argv[1]))
 		return (0);
-	}
-	if (!ft_initialize_map(&map, argv[1]))
+	if (!ft_play_game(&game))
 		return (0);
-	while (map)
-	{
-		ft_printf("%c\n", map->c);
-		map = map->next;
-	}
+	ft_lst_clear_map(&(game.map));
 	return (0);
 }

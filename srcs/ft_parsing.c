@@ -6,26 +6,13 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:19:31 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/23 19:39:11 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/02 13:25:22 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../head/so_long.h"
 
-int	ft_error(t_map **map, int message, char *line)
-{
-	ft_lst_clear_map(map);
-	free(line);
-	if (!message)
-		ft_printf("Error\nError while opening the file !\n");
-	else if (message == 1)
-		ft_printf("Error\nLe malloc est bien securise, ressaye !\n");
-	else if (message == 2)
-		ft_printf("Error\nError while closing the file !\n");
-	return (0);
-}
-
-int	ft_fill_map(t_map **map, char *str, int y)
+static int	ft_fill_map(t_map **map, char *str, int y)
 {
 	t_map	*new;
 	int		x;
@@ -45,7 +32,7 @@ int	ft_fill_map(t_map **map, char *str, int y)
 	return (1);
 }
 
-int	ft_read_file(t_map	**map, int fd)
+static int	ft_read_file(t_map	**map, int fd)
 {
 	char	*line;
 	int		y;
@@ -68,17 +55,35 @@ int	ft_read_file(t_map	**map, int fd)
 	return (1);
 }
 
-int	ft_initialize_map(t_map	**map, char *path)
+static int	ft_initialize_game(t_map **map, char *path)
 {
 	int		fd;
 
+	if (!ft_wrong_path(path))
+		return (ft_errors(NULL, 11, NULL));
 	fd = open(path, O_RDONLY);
 	if (fd == -1)
-		return (ft_error(map, 0, NULL));
-	if (!ft_read_file(map, fd))
+		return (ft_error(NULL, 0, NULL));
+	if (!ft_read_file(map, fd) || !ft_verif_char(*map)
+		|| !ft_verif_rect(*map)
+		|| !ft_verif_walls(*map)
+		|| !ft_complete_map(map))
 		return (0);
 	if (close(fd) == -1)
 		return (ft_error(map, 2, NULL));
 	return (1);
 }
 
+int	ft_start_game(t_game *game, char *path)
+{
+	t_map	*map;
+
+	map = NULL;
+	if (!ft_initialize_game(&map, path))
+		return (0);
+	(*game).map = map;
+	(*game).nb_moves = 0;
+	if (!ft_set_up(game) || !ft_verif_path(game))
+		return (0);
+	return (1);
+}

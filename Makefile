@@ -28,8 +28,12 @@ DIR_HEAD	=	head/
 
 HEAD		=	so_long.h
 
-SRCS		=	main.c		ft_parsing.c	\
-				ft_lst_use.c
+SRCS		=	main.c				ft_parsing.c		\
+				ft_lst_map.c		ft_error_map.c		\
+				ft_check_paths.c	ft_set_up.c			\
+				ft_msg_error.c		ft_create_board.c	\
+				ft_play_game.c		ft_create_sprites.c	\
+				ft_my_mlx.c
 
 OBJS		=	${SRCS:%.c=${DIR_OBJS}%.o}
 
@@ -50,14 +54,14 @@ all				:	${NAME}
 
 # ---- Variables Rules ---- #
 
-${NAME}			:	${OBJS} Makefile ${LIBMLX} ${LIBFT} ${addprefix ${DIR_HEAD}, ${HEAD}}
+${NAME}			:	${OBJS} Makefile ${LIBMLX} ${addprefix ${DIR_LIBFT}, ${LIBFT}} ${addprefix ${DIR_HEAD}, ${HEAD}}
 					${CC} ${CFLAGS} -o ${NAME} ${OBJS} -L${DIR_LIBFT} -lft  -L${DIR_MLX} -lmlx -framework OpenGL -framework AppKit
 
 ${LIBMLX}		:
 					make ${LIBMLX} -C ${DIR_MLX}
 					cp ${addprefix ${DIR_MLX}, ${LIBMLX}} .
 
-${LIBFT}		:
+${addprefix ${DIR_LIBFT}, ${LIBFT}}	:
 					make ${LIBFT} -C ${DIR_LIBFT}
 
 # ---- Compiled Rules ---- #
