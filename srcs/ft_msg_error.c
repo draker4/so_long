@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:29:55 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/06 17:59:37 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 17:24:23 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_error(t_map **map, int message, char *line)
 	if (!message)
 		ft_printf("Error\nError while opening the file!\n");
 	else if (message == 1)
-		ft_printf("Error\nLe malloc est bien securise, ressaye!\n");
+		ft_printf("Error\nMemory allocation is well secured, try again!\n");
 	else if (message == 2)
 		ft_printf("Error\nError while closing the file!\n");
 	else if (message == 3)
@@ -28,7 +28,7 @@ int	ft_error(t_map **map, int message, char *line)
 		ft_printf("Error\nThere is an empty line in the map!\n");
 	else if (message == 6)
 		ft_printf("Error\nPlease use only 'E', 'C', 'P', '0' and '1' \
-characters in the map !\n");
+characters in the map!\n");
 	else if (message == 7)
 		ft_printf("Error\nPlease select a map with one exit only!\n");
 	else if (message == 8)
@@ -37,7 +37,7 @@ characters in the map !\n");
 		ft_printf("Error\nPlease select a map with one player \
 starting position only!\n");
 	else if (message == 10)
-		ft_printf("Error\nPlease select a map surrounded by walls\n");
+		ft_printf("Error\nPlease select a map surrounded by walls1\n");
 	return (0);
 }
 
@@ -53,7 +53,7 @@ extension!\n");
 	else if (message == 13)
 		ft_printf("Error\nProblem with a node of my list!\n");
 	else if (message == 14)
-		ft_printf("Error\nPas le bon nombre d'arguments !\n");
+		ft_printf("Error\nPlease enter one argument and one only1\n");
 	else if (message == 15)
 		ft_printf("Error\nPlease choose a map with a valid path to the exit!\n");
 	return (0);
