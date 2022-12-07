@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:38:25 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 16:07:53 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 17:02:55 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,7 @@ void	ft_rect_heart(t_game *game)
 		}
 		y++;
 	}
+	ft_create_board(game);
 }
 
 void	ft_create_board(t_game *game)

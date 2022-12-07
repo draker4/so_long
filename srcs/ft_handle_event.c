@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 19:29:54 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 16:43:36 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 17:09:47 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,6 +95,5 @@ int	ft_exit_game(t_game *game)
 	mlx_destroy_window(game->mlx, game->win);
 	ft_lst_clear_map(&(game->map));
 	ft_lst_clear_ennemy(&(game->ennemy));
-	free(game->win);
 	exit(0);
 }
