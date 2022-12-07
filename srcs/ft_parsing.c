@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:19:31 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/02 13:25:22 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/06 17:56:59 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,9 @@ int	ft_start_game(t_game *game, char *path)
 	(*game).map = map;
 	(*game).nb_moves = 0;
 	if (!ft_set_up(game) || !ft_verif_path(game))
+	{
+		ft_lst_clear_ennemy(&game->ennemy);
 		return (0);
+	}
 	return (1);
 }

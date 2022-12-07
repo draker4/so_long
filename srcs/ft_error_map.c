@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 19:45:48 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/02 13:17:41 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 15:57:55 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ int	ft_verif_rect(t_map *map)
 static int	ft_is_char_ok(char c, int *exit, int *collectible, \
 	int *player_start)
 {
-	if (c != '0' && c != '1' && c != 'C' && c != 'E' && c != 'P')
+	if (c != '0' && c != '1' && c != 'C' && c != 'E' && c != 'P' && c != 'X')
 		return (0);
 	if (c == 'E')
 		*exit += 1;
@@ -79,7 +79,7 @@ int	ft_verif_char(t_map *map)
 	return (1);
 }
 
-int	ft_verif_walls(t_map *map)//, int max_x, int max_y)
+int	ft_verif_walls(t_map *map)
 {
 	t_map	*current;
 

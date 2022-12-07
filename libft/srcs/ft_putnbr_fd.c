@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/10 10:31:12 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/23 16:59:31 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 15:57:27 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,4 +40,3 @@ void	ft_putnbr_base(unsigned long long nb, int *count, int maj)
 	else
 		ft_putchar("0123456789ABCDEF"[nb % 16]);
 }
-

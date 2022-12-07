@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 17:29:32 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/25 11:46:36 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/06 17:37:43 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,8 @@ t_map	*ft_new_elem(char c, int x, int y)
 	t_map	*elem;
 
 	elem = malloc(sizeof(t_map));
+	if (!elem)
+		return (NULL);
 	elem->next = NULL;
 	elem->up = NULL;
 	elem->down = NULL;

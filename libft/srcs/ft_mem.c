@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 15:39:53 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/23 16:57:53 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/03 11:02:21 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,6 @@ void	*ft_memcpy(void *dst, const void *src, size_t n)
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	size_t	i;
-
-	i = 0;
 	if ((!dst && !src) || (!dst && !src && len))
 		return (NULL);
 	if (dst > src)

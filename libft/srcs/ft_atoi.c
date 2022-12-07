@@ -6,13 +6,13 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/08 16:40:36 by bperriol          #+#    #+#             */
-/*   Updated: 2022/11/14 14:40:05 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/03 11:01:21 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	static	ft_overflow(int sign)
+static int	ft_overflow(int sign)
 {
 	if (sign < 0)
 		return ((int)LONG_MIN);

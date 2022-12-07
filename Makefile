@@ -33,7 +33,12 @@ SRCS		=	main.c				ft_parsing.c		\
 				ft_check_paths.c	ft_set_up.c			\
 				ft_msg_error.c		ft_create_board.c	\
 				ft_play_game.c		ft_create_sprites.c	\
-				ft_my_mlx.c
+				ft_my_mlx.c			ft_game_utils.c		\
+				ft_move_player.c	ft_anim_player.c	\
+				ft_move_offset.c	ft_handle_event.c	\
+				ft_animations.c		ft_string_window.c	\
+				ft_move_ennemy.c	ft_lst_ennemy.c		\
+				ft_game_utils_2.c
 
 OBJS		=	${SRCS:%.c=${DIR_OBJS}%.o}
 

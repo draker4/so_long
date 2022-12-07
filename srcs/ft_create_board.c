@@ -6,72 +6,79 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:38:25 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/02 20:01:54 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/07 16:07:53 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../head/so_long.h"
 
-static void	ft_sprite_to_window(t_game *game, t_map *current)
+static void	ft_init_sprite_to_window(t_game *game, t_map *current)
 {
+	int	life;
+
+	life = 0;
 	if (current->type == '1')
 		ft_create_wall(game, current);
-	if (current->type == '0')
-		ft_create_background(game, current);
-	else if (current->type == 'P')
-		ft_create_player_sprite(game, current);
-	else if (current->type == 'E')
-		ft_create_exit(game, current);
-	else if (current->type == 'C')
-		ft_create_collectible(game, current);
+	else
+		ft_put_xpm_to_image(game, current, game->sprites.bkground, 0);
 }
 
-static void	ft_initialize_ptr_sprites(t_game *game)
+void	ft_rect_heart(t_game *game)
 {
-	game->sprites.ptr_sprite_background = ft_create_img(game, \
-		PATH_SPRITE_BACKGROUND);
-	game->sprites.ptr_sprite_block = ft_create_img(game, \
-		PATH_SPRITE_BLOCK);
-	game->sprites.ptr_sprite_collectible = ft_create_img(game, \
-		PATH_SPRITE_COLLECTIBLE);
-	game->sprites.ptr_sprite_exit = ft_create_img(game, \
-		PATH_SPRITE_EXIT);
-	game->sprites.ptr_sprite_ground = ft_create_img(game, \
-		PATH_SPRITE_GROUND);
-	game->sprites.ptr_sprite_left = ft_create_img(game, \
-		PATH_SPRITE_LEFT);
-	game->sprites.ptr_sprite_player = ft_create_img(game, \
-		PATH_SPRITE_PLAYER);
-	game->sprites.ptr_sprite_right = ft_create_img(game, \
-		PATH_SPRITE_RIGHT);
-	game->sprites.ptr_sprite_top = ft_create_img(game, \
-		PATH_SPRITE_TOP);
+	int	x;
+	int	y;
+
+	y = (game->map->max.y + 1) * SPRITES;
+	while (y < (game->map->max.y + 2) * SPRITES)
+	{
+		x = (game->map->max.x - MAX_LIFE - 1) * SPRITES;
+		while (x < (game->map->max.x + 1) * SPRITES)
+		{
+			my_mlx_pixel_put(&game->data, x, y, 0);
+			x++;
+		}
+		y++;
+	}
 }
 
 void	ft_create_board(t_game *game)
 {
 	t_map	*current;
+	int		life;
 
-	ft_initialize_ptr_sprites(game);
+	life = game->player.life - 1;
+	if (life > game->map->max.x - 5)
+		life = game->map->max.x - 5;
 	current = game->map;
 	while (current)
 	{
-		ft_sprite_to_window(game, current);
+		ft_init_sprite_to_window(game, current);
+		if (current->pos.x == game->map->max.x - life \
+		&& current->pos.y == game->map->max.y && game->map->max.x > 10)
+		{
+			ft_put_xpm_to_image(game, current, game->sprites.heart, SPRITES);
+			life--;
+		}
 		current = current->next;
 	}
 }
 
-void	ft_move_board(t_game *game, int order)
+void	ft_move_board(t_game *game)
 {
 	t_map	*current;
 
 	current = game->map;
 	while (current)
 	{
-		if (!order && (current->type == '0' || current->type == '1'))
-			ft_sprite_to_window(game, current);
-		else if (order && (current->type != '0' || current->type != '1'))
-			ft_sprite_to_window(game, current);
+		if (current->type == 'E')
+			mlx_put_image_to_window(game->mlx, game->win, game->sprites.exit.\
+				img, current->pos.x * SPRITES, current->pos.y * SPRITES);
+		else if (current->type == 'C')
+			mlx_put_image_to_window(game->mlx, game->win, game->sprites.collect.\
+				img, current->pos.x * SPRITES, current->pos.y * SPRITES);
 		current = current->next;
 	}
+	mlx_put_image_to_window(game->mlx, game->win, game->sprites.player.img, \
+		game->player.pos.x - SPRITES / 2, game->player.pos.y - SPRITES / 2 + \
+		(SPRITES - SPRITES_PLAYER_Y));
 }

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 14:29:55 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/02 18:35:26 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/06 17:59:37 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ extension!\n");
 int	ft_error_game(t_game *game, int message)
 {
 	free(game->win);
+	ft_lst_clear_ennemy(&game->ennemy);
 	if (message == 16)
 		ft_printf("Error\nProgram couldn't init minilibx!\n");
 	else if (message == 17)
