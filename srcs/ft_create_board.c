@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 11:38:25 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 17:02:55 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 12:18:48 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,10 +54,12 @@ void	ft_create_board(t_game *game)
 	while (current)
 	{
 		ft_init_sprite_to_window(game, current);
-		if (current->pos.x == game->map->max.x - life \
-		&& current->pos.y == game->map->max.y && game->map->max.x > 10)
+		if (current->pos.x == game->map->max.x - life && current->pos.y == \
+		game->map->max.y && game->map->max.x > 3)
 		{
-			ft_put_xpm_to_image(game, current, game->sprites.heart, SPRITES);
+			if (game->map->max.x > 3 + life)
+				ft_put_xpm_to_image(game, current, game->sprites.heart, \
+				SPRITES);
 			life--;
 		}
 		current = current->next;

@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:24:28 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/08 10:24:46 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 12:22:35 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,7 @@ static int	ft_ennemy_right(t_game *game, t_ennemy *ennemy)
 
 static int	ft_ennemy_left(t_game *game, t_ennemy *ennemy)
 {
-	return (ft_is_not_wall(ennemy->pos.x - SPRITES / 2 - SPEED_ENNEMY - \
-	+ 2 * O_GROUND, \
+	return (ft_is_not_wall(ennemy->pos.x - SPRITES / 2 - SPEED_ENNEMY, \
 	ennemy->pos.y, game) && !ft_is_not_wall(ennemy->pos.x - SPRITES / 2 - \
 	SPEED_ENNEMY, ennemy->pos.y + SPRITES / 2 + O_GROUND, game));
 }

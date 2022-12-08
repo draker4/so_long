@@ -26,7 +26,7 @@ DIR_HEAD	=	head/
 
 # ---- Files ---- #
 
-HEAD		=	so_long.h
+HEAD		=	so_long.h			so_long_path.h
 
 SRCS		=	main.c				ft_parsing.c		\
 				ft_lst_map.c		ft_error_map.c		\
