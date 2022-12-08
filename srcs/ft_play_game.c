@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/02 15:02:06 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 17:03:52 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 10:27:37 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,13 +30,7 @@ static int	ft_render_next_frame(t_game *game)
 		ft_move_board(game);
 	}
 	else
-	{
-		if (!game->collect.nb_collectibles)
-			ft_end_game(game, game->sprites.victory);
-		else
-			ft_end_game(game, game->sprites.death);
-		mlx_put_image_to_window(game->mlx, game->win, game->data.img, 0, 0);
-	}
+		ft_send_end(game);
 	return (1);
 }
 

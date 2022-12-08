@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/06 17:24:28 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 17:05:03 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 10:24:46 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,10 +77,10 @@ void	ft_is_ennemy(t_game *game)
 			{
 				game->player.life--;
 				if (game->player.life > 1)
-					ft_printf("You loose one life. You have now %d lives.\n", \
+					ft_printf("You lose one life. You have now %d lives.\n", \
 					game->player.life);
 				else
-					ft_printf("You loose one life. You have now %d life.\n", \
+					ft_printf("You lose one life. You have now %d life.\n", \
 					game->player.life);
 				game->player.hit = 1;
 				game->player.invicible = 1;

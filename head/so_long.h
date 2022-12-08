@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:49:46 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 16:23:12 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 10:27:57 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -249,7 +249,7 @@ void			ft_invicibility(t_game *game);
 
 //prototypes utils game next
 void			ft_is_jumping(t_game *game);
-void			ft_end_game(t_game *game, t_data data);
+void			ft_send_end(t_game *game);
 
 //prototypes move player
 void			ft_move_player(t_game *game);

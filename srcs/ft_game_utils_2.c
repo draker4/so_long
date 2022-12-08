@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 14:20:54 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 16:08:00 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 10:32:17 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,15 @@ void	ft_is_jumping(t_game *game)
 	}
 }
 
-void	ft_end_game(t_game *game, t_data data)
+static void	ft_write_win(t_game *game)
+{
+	if (!game->collect.nb_collectibles)
+		ft_printf("You won! VICTORY!\n");
+	else
+		ft_printf("You lose! Try again you can do it !\n");
+}
+
+static void	ft_end_game(t_game *game, t_data data)
 {
 	t_map		*current;
 	static int	x;
@@ -43,8 +51,20 @@ void	ft_end_game(t_game *game, t_data data)
 			current = current->next;
 		}
 		if (x >= game->map->max.x)
+		{
+			ft_write_win(game);
 			ft_exit_game(game);
+		}
 		else if (x != game->map->max.x)
 			x++;
 	}
+}
+
+void	ft_send_end(t_game *game)
+{
+	if (!game->collect.nb_collectibles)
+		ft_end_game(game, game->sprites.victory);
+	else
+		ft_end_game(game, game->sprites.death);
+	mlx_put_image_to_window(game->mlx, game->win, game->data.img, 0, 0);
 }
