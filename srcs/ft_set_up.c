@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/25 11:51:25 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 16:08:02 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 15:17:11 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,6 +57,7 @@ static void	ft_set_up_const(t_game *game)
 	game->player.life = MAX_LIFE;
 	game->player.hit = 0;
 	game->death = 0;
+	game->won = 0;
 	game->ennemy = NULL;
 }
 

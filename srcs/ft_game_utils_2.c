@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/07 14:20:54 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/08 10:32:17 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 15:20:01 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,9 +62,9 @@ static void	ft_end_game(t_game *game, t_data data)
 
 void	ft_send_end(t_game *game)
 {
-	if (!game->collect.nb_collectibles)
+	if (game->won)
 		ft_end_game(game, game->sprites.victory);
-	else
+	else if (game->death)
 		ft_end_game(game, game->sprites.death);
 	mlx_put_image_to_window(game->mlx, game->win, game->data.img, 0, 0);
 }

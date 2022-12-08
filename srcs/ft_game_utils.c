@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:16:22 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 15:58:07 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 15:18:51 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,7 @@ void	ft_reverse_if(t_game *game)
 
 void	ft_invicibility(t_game *game)
 {
+	ft_printf("death = %d\n", game->death);
 	if (!game->player.life)
 		game->death = 1;
 	if (game->player.invicible)

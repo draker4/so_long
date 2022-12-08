@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/12/03 15:25:27 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/07 15:46:05 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 15:19:41 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,10 @@ static void	ft_change_type(t_game *game, int dir)
 	if (game->player.map->type != 'E' && game->player.map->type != 'X')
 		game->player.map->type = 'P';
 	else if (game->player.map->type == 'E' && !game->collect.nb_collectibles)
+	{
 		game->death = 1;
+		game->won = 1;
+	}
 }
 
 void	ft_adapt_board(t_game *game)

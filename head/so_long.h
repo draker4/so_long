@@ -6,7 +6,7 @@
 /*   By: bperriol <bperriol@student.42lyon.fr>      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/23 12:49:46 by bperriol          #+#    #+#             */
-/*   Updated: 2022/12/08 12:22:51 by bperriol         ###   ########lyon.fr   */
+/*   Updated: 2022/12/08 15:17:14 by bperriol         ###   ########lyon.fr   */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -141,6 +141,7 @@ typedef struct s_game
 	int				gravity;
 	int				is_reverse;
 	int				death;
+	int				won;
 	t_data			data;
 }	t_game;
 
